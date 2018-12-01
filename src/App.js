@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Switch, Route, BrowserRouter } from 'react-router-dom'
+import { Switch, Route, BrowserRouter } from 'react-router-dom';
+import { Par } from './Par';
 
 class App extends Component {
   state = {
@@ -13,6 +14,13 @@ class App extends Component {
     this.setState({
       selected: value
     })
+  };
+
+  setRoute = () => {
+    const {selected} = this.state;
+    if (selected === 1) return (<Par number={selected}/>);
+    if (selected === 2) return (<Par number={selected}/>);
+    if (selected === 3) return (<Par number={selected}/>);
   };
 
   render() {
@@ -37,15 +45,7 @@ class App extends Component {
 
           <div className="pageBody">
             <Switch>
-              <Route exact path="/" render={() => (
-                <p>1</p>
-              )}/>
-              <Route exact path="/2" render={() => (
-                <p>2</p>
-              )}/>
-              <Route exact path="/3" render={() => (
-                <p>3</p>
-              )}/>
+              <Route exact path="/" render={() => this.setRoute}/>
             </Switch>
           </div>
 
